@@ -1,0 +1,21 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+interface IContractA {
+    function setScore(uint _newScore) external payable;
+}
+
+contract ContractB {
+    address public contractAAddress;
+    uint public scoreInContractB;
+
+    constructor(address _contractAAddress) {
+        contractAAddress = _contractAAddress;
+    }
+
+    function updateScoreValue(uint _newScore) public payable {
+        IContractA contractA = IContractA(contractAAddress);
+        contractA.setScore(_newScore);
+        scoreInContractB = _newScore;
+    }
+}
