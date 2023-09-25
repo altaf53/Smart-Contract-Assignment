@@ -1,0 +1,13 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract ContractA {
+    uint public score;
+
+    event ScoreUpdated(uint newScore);
+
+    function setValue(uint _newScore) public payable {
+        score = _newScore;
+        emit ScoreUpdated(_newScore);
+    }
+}
